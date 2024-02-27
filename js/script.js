@@ -1,7 +1,16 @@
 "use strict"
 
-const numberOfSeries = prompt("Nechta serial ko'rdingiz?", "")
-
+let numberOfSeries = +prompt("Nechta serial ko'rdingiz?", "")
+console.log(numberOfSeries)
+if (numberOfSeries !== null && numberOfSeries !== 0) {
+    if (1 <= numberOfSeries && numberOfSeries < 5) {
+        console.log(`Kam serial korarkansiz`)
+    } else if (5 <= numberOfSeries && numberOfSeries <= 10) {
+        console.log(`Siz classic tomoshabin ekansiz`)
+    } else if (numberOfSeries > 10) {
+        console.log(`Siz serialchi bolsangiz kere`)
+    }
+}
 const seriesDb = {
     count: numberOfSeries,
     series: {},
@@ -10,14 +19,16 @@ const seriesDb = {
     private: false
 }
 
-const nameQuesFirst = prompt("Oxirgi ko'rgan serialingiz?", "")
-const markQuesFirst = prompt("Necha baxo berasiz?", "")
-const nameQuesSecond = prompt("Oxirgi ko'rgan serialingiz?", "")
-const markQuesSecond = prompt("Necha baxo berasiz?", "")
-
-seriesDb.series[nameQuesFirst] = markQuesFirst
-seriesDb.series[nameQuesSecond] = markQuesSecond
-
+for (let i = 0; i < 2; i++) {
+    let a = prompt("Oxirgi ko'rgan serialingiz?", ""),
+        b = prompt("Necha baxo berasiz?", "");
+    if (a !== null && b !== null && a !== "" && b !== "") {
+        seriesDb.series[a] = b
+        console.log("Done")
+    } else {
+        i--
+    }
+}
 
 console.log(seriesDb)
 
