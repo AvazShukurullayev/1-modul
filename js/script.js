@@ -1,40 +1,36 @@
 "use strict"
 
-function getNumberOfSeries() {
-    let numberOfSeries = +prompt("Nechta serial ko'rdingiz?", "")
-    console.log(numberOfSeries)
-    if (numberOfSeries !== null && numberOfSeries !== 0) {
-        if (1 <= numberOfSeries && numberOfSeries < 5) {
-            console.log(`Kam serial korarkansiz`)
-        } else if (5 <= numberOfSeries && numberOfSeries <= 10) {
-            console.log(`Siz classic tomoshabin ekansiz`)
-        } else if (numberOfSeries > 10) {
-            console.log(`Siz serialchi bolsangiz kere`)
-        }
-    }
+let numberOfSeries
 
-    return numberOfSeries
+function startApp() {
+    do {
+        numberOfSeries = +prompt("Nechta serial ko'rdingiz?", "")
+    } while (numberOfSeries === null || numberOfSeries === "" || numberOfSeries === 0 || isNaN(numberOfSeries))
 }
 
-
+startApp()
 const seriesDb = {
-    count: getNumberOfSeries(),
+    count: numberOfSeries,
     series: {},
     actors: {},
     genres: [],
     private: false
 }
 
-for (let i = 0; i < 2; i++) {
-    let a = prompt("Oxirgi ko'rgan serialingiz?", ""),
-        b = prompt("Necha baxo berasiz?", "");
-    if (a !== null && b !== null && a !== "" && b !== "") {
-        seriesDb.series[a] = b
-        console.log("Done")
-    } else {
-        i--
+function favouriteSeries() {
+    for (let i = 0; i < 2; i++) {
+        let a = prompt("Oxirgi ko'rgan serialingiz?", ""),
+            b = prompt("Necha baxo berasiz?", "");
+        if (a !== null && b !== null && a !== "" && b !== "") {
+            seriesDb.series[a] = b
+            console.log("Done")
+        } else {
+            i--
+        }
     }
 }
+
+favouriteSeries()
 
 function showDb() {
     if (!seriesDb.private) {
@@ -52,3 +48,19 @@ function writeGenres() {
 }
 
 writeGenres()
+
+function detectingSeriesCount(count) {
+    if (count !== null && count !== 0) {
+        if (1 <= count && count < 5) {
+            console.log(`Kam serial korarkansiz`)
+        } else if (5 <= count && count <= 10) {
+            console.log(`Siz classic tomoshabin ekansiz`)
+        } else if (count > 10) {
+            console.log(`Siz serialchi bolsangiz kere`)
+        } else {
+            console.log("Qandaydur xatolik yuz berdi!")
+        }
+    }
+}
+
+detectingSeriesCount(seriesDb.count)
