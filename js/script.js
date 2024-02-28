@@ -39,6 +39,9 @@ const seriesDb = {
                 i--
             }
         }
+        if (this.genres.length) {
+            this.genres.forEach((item, index) => console.log(`Yaxshi ko'rgan janringiz #${index + 1} - nomi: ${item}.`))
+        }
     },
     detectingSeriesCount: function () {
         if (this.count !== null && this.count !== 0) {
