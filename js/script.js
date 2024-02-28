@@ -1,18 +1,16 @@
 "use strict"
-let numberOfSeries
-do {
-    numberOfSeries = +prompt("Nechta serial ko'rdingiz?", "")
-    console.log(numberOfSeries)
-    if (numberOfSeries !== null && numberOfSeries !== 0) {
-        if (1 <= numberOfSeries && numberOfSeries < 5) {
-            console.log(`Kam serial korarkansiz`)
-        } else if (5 <= numberOfSeries && numberOfSeries <= 10) {
-            console.log(`Siz classic tomoshabin ekansiz`)
-        } else if (numberOfSeries > 10) {
-            console.log(`Siz serialchi bolsangiz kere`)
-        }
+
+let numberOfSeries = +prompt("Nechta serial ko'rdingiz?", "")
+console.log(numberOfSeries)
+if (numberOfSeries !== null && numberOfSeries !== 0) {
+    if (1 <= numberOfSeries && numberOfSeries < 5) {
+        console.log(`Kam serial korarkansiz`)
+    } else if (5 <= numberOfSeries && numberOfSeries <= 10) {
+        console.log(`Siz classic tomoshabin ekansiz`)
+    } else if (numberOfSeries > 10) {
+        console.log(`Siz serialchi bolsangiz kere`)
     }
-} while (numberOfSeries)
+}
 
 const seriesDb = {
     count: numberOfSeries,
