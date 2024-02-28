@@ -57,3 +57,10 @@ const seriesDb = {
         this.private = !this.private;
     },
 }
+
+seriesDb.start()
+seriesDb.favouriteSeries()
+seriesDb.showDb()
+seriesDb.writeGenres()
+seriesDb.detectingSeriesCount()
+seriesDb.visibleDb()
