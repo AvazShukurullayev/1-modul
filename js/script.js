@@ -1,19 +1,24 @@
 "use strict"
 
-let numberOfSeries = +prompt("Nechta serial ko'rdingiz?", "")
-console.log(numberOfSeries)
-if (numberOfSeries !== null && numberOfSeries !== 0) {
-    if (1 <= numberOfSeries && numberOfSeries < 5) {
-        console.log(`Kam serial korarkansiz`)
-    } else if (5 <= numberOfSeries && numberOfSeries <= 10) {
-        console.log(`Siz classic tomoshabin ekansiz`)
-    } else if (numberOfSeries > 10) {
-        console.log(`Siz serialchi bolsangiz kere`)
+function getNumberOfSeries() {
+    let numberOfSeries = +prompt("Nechta serial ko'rdingiz?", "")
+    console.log(numberOfSeries)
+    if (numberOfSeries !== null && numberOfSeries !== 0) {
+        if (1 <= numberOfSeries && numberOfSeries < 5) {
+            console.log(`Kam serial korarkansiz`)
+        } else if (5 <= numberOfSeries && numberOfSeries <= 10) {
+            console.log(`Siz classic tomoshabin ekansiz`)
+        } else if (numberOfSeries > 10) {
+            console.log(`Siz serialchi bolsangiz kere`)
+        }
     }
+
+    return numberOfSeries
 }
 
+
 const seriesDb = {
-    count: numberOfSeries,
+    count: getNumberOfSeries(),
     series: {},
     actors: {},
     genres: [],
@@ -31,6 +36,19 @@ for (let i = 0; i < 2; i++) {
     }
 }
 
-console.log(seriesDb)
+function showDb() {
+    if (!seriesDb.private) {
+        console.log(seriesDb)
+    }
+}
 
+showDb()
 
+function writeGenres() {
+    for (let i = 0; i < 3; i++) {
+        const userFavouriteSeries = prompt(`yaxshi ko'rgan janringiz ${i + 1}?`)
+        seriesDb.genres.push(userFavouriteSeries)
+    }
+}
+
+writeGenres()
